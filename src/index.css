@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Aesthetic — Soft dark slate with sage + peach accents */
+
+@layer base {
+  :root {
+    --background: 220 18% 9%;
+    --foreground: 30 15% 92%;
+
+    --card: 220 16% 12%;
+    --card-foreground: 30 15% 92%;
+
+    --popover: 220 18% 10%;
+    --popover-foreground: 30 15% 92%;
+
+    --primary: 150 30% 70%;
+    --primary-foreground: 220 25% 10%;
+
+    --secondary: 220 14% 16%;
+    --secondary-foreground: 30 15% 92%;
+
+    --muted: 220 12% 15%;
+    --muted-foreground: 30 8% 65%;
+
+    --accent: 18 65% 75%;
+    --accent-foreground: 220 25% 10%;
+
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 12% 20%;
+    --input: 220 14% 16%;
+    --ring: 150 30% 70%;
+
+    --radius: 1rem;
+
+    /* Aesthetic palette */
+    --sage: 150 30% 70%;
+    --sage-deep: 155 25% 45%;
+    --peach: 18 65% 75%;
+    --peach-deep: 14 55% 60%;
+    --cream: 30 25% 88%;
+    --slate-deep: 220 22% 7%;
+    --slate-soft: 220 16% 14%;
+
+    /* Gradients */
+    --gradient-aesthetic: linear-gradient(135deg, hsl(220 22% 7%) 0%, hsl(225 18% 11%) 50%, hsl(220 22% 8%) 100%);
+    --gradient-sage: linear-gradient(135deg, hsl(150 30% 70%) 0%, hsl(155 25% 55%) 100%);
+    --gradient-peach: linear-gradient(135deg, hsl(18 65% 75%) 0%, hsl(14 55% 65%) 100%);
+    --gradient-warm: linear-gradient(135deg, hsl(150 30% 70%) 0%, hsl(18 65% 75%) 100%);
+    --gradient-overlay: linear-gradient(180deg, hsl(220 22% 7% / 0.3) 0%, hsl(220 22% 7% / 0.95) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(220 16% 14% / 0.7) 0%, hsl(220 18% 10% / 0.8) 100%);
+
+    /* Shadows */
+    --shadow-soft: 0 10px 40px -12px hsl(150 30% 50% / 0.25);
+    --shadow-soft-lg: 0 25px 60px -15px hsl(150 30% 40% / 0.3);
+    --shadow-deep: 0 25px 50px -12px hsl(220 25% 3% / 0.7);
+    --glow-sage: 0 0 50px hsl(150 30% 70% / 0.2);
+    --glow-peach: 0 0 50px hsl(18 65% 75% / 0.2);
+
+    /* Transitions */
+    --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    --sidebar-background: 220 18% 9%;
+    --sidebar-foreground: 30 15% 92%;
+    --sidebar-primary: 150 30% 70%;
+    --sidebar-primary-foreground: 220 25% 10%;
+    --sidebar-accent: 220 14% 16%;
+    --sidebar-accent-foreground: 30 15% 92%;
+    --sidebar-border: 220 12% 20%;
+    --sidebar-ring: 150 30% 70%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    background-image:
+      radial-gradient(ellipse at top left, hsl(150 30% 25% / 0.18) 0%, transparent 55%),
+      radial-gradient(ellipse at bottom right, hsl(18 50% 30% / 0.15) 0%, transparent 55%),
+      radial-gradient(ellipse at center, hsl(220 20% 12% / 0.4) 0%, transparent 70%);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background: hsl(var(--sage) / 0.3);
+    color: hsl(var(--cream));
+  }
+}
+
+@layer components {
+  .text-warm-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-warm);
+  }
+
+  .text-sage-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-sage);
+  }
+
+  .bg-aesthetic {
+    background: var(--gradient-aesthetic);
+  }
+
+  .bg-card-soft {
+    background: var(--gradient-card);
+    backdrop-filter: blur(12px);
+  }
+
+  .border-soft {
+    border-color: hsl(var(--border));
+  }
+
+  .glow-sage {
+    box-shadow: var(--glow-sage);
+  }
+
+  .glow-peach {
+    box-shadow: var(--glow-peach);
+  }
+
+  .shadow-deep {
+    box-shadow: var(--shadow-deep);
+  }
+
+  .display-font {
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+  .serif-font {
+    font-family: 'Instrument Serif', serif;
+    letter-spacing: -0.01em;
+  }
+
+  /* Subtle grain texture */
+  .grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.04;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
