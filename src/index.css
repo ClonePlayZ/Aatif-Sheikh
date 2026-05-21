@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&family=Orbitron:wght@500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 230 25% 4%;
+  --foreground: 180 20% 95%;
+
+  --card: 230 25% 7%;
+  --card-foreground: 180 20% 95%;
+
+  --popover: 230 28% 5%;
+  --popover-foreground: 180 20% 95%;
+
+  --primary: 180 100% 55%;
+  --primary-foreground: 230 30% 4%;
+
+  --secondary: 230 20% 12%;
+  --secondary-foreground: 180 20% 95%;
+
+  --muted: 230 18% 11%;
+  --muted-foreground: 200 10% 65%;
+
+  --accent: 280 100% 70%;
+  --accent-foreground: 230 30% 4%;
+
+  --destructive: 0 80% 60%;
+  --destructive-foreground: 0 0% 100%;
+
+  --border: 195 60% 22%;
+  --input: 230 20% 12%;
+  --ring: 180 100% 55%;
+
+  --radius: 0.75rem;
+
+  /* Cyber palette */
+  --cyan: 180 100% 55%;
+  --cyan-deep: 185 85% 38%;
+  --violet: 270 95% 70%;
+  --magenta: 320 95% 65%;
+  --neon-green: 145 100% 55%;
+  --ink: 230 30% 3%;
+  --ink-soft: 230 25% 6%;
+  --grid: 195 50% 20%;
+
+  /* Gradients */
+  --gradient-cyber: linear-gradient(135deg, hsl(180 100% 55%) 0%, hsl(270 95% 70%) 100%);
+  --gradient-mesh: radial-gradient(at 30% 20%, hsl(180 100% 25% / 0.18) 0px, transparent 50%),
+                   radial-gradient(at 80% 0%, hsl(270 95% 35% / 0.18) 0px, transparent 50%),
+                   radial-gradient(at 70% 90%, hsl(320 95% 30% / 0.16) 0px, transparent 50%),
+                   radial-gradient(at 10% 80%, hsl(195 80% 25% / 0.18) 0px, transparent 50%);
+  --gradient-card: linear-gradient(145deg, hsl(230 25% 8% / 0.85) 0%, hsl(230 28% 5% / 0.90) 100%);
+
+  /* Glows */
+  --glow-cyan: 0 0 40px hsl(180 100% 55% / 0.35), 0 0 80px hsl(180 100% 55% / 0.15);
+  --glow-violet: 0 0 40px hsl(270 95% 70% / 0.35), 0 0 80px hsl(270 95% 70% / 0.15);
+  --glow-magenta: 0 0 40px hsl(320 95% 65% / 0.35);
+  --shadow-deep: 0 30px 80px -20px hsl(180 100% 50% / 0.25), 0 10px 30px -10px hsl(230 30% 0% / 0.8);
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: hsl(var(--background));
+  font-family: Inter, sans-serif;
+  color: hsl(var(--foreground));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: hsl(var(--ink));
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, hsl(180 100% 25% / 0.22) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 100%, hsl(270 95% 35% / 0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 10% 100%, hsl(320 95% 30% / 0.12) 0%, transparent 60%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+::-moz-selection { background: hsl(var(--cyan) / 0.35); color: white; }
+::selection { background: hsl(var(--cyan) / 0.35); color: white; }
+
+/* Cyber scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: hsl(var(--ink)); }
+::-webkit-scrollbar-thumb { background: linear-gradient(180deg, hsl(var(--cyan-deep)), hsl(var(--violet))); border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: hsl(var(--cyan)); }
+
+.text-cyber-gradient {
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-image: var(--gradient-cyber);
+}
+
+.bg-card-glass {
+  background: var(--gradient-card);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+}
+
+.display-font { font-family: 'Orbitron', 'Space Grotesk', sans-serif; letter-spacing: 0.02em; }
+.mono-font { font-family: 'JetBrains Mono', monospace; letter-spacing: -0.01em; }
+.body-font { font-family: 'Inter', sans-serif; }
+
+/* Cyber grid */
+.cyber-grid {
+  background-image:
+    linear-gradient(hsl(var(--cyan) / 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--cyan) / 0.06) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+}
+
+/* Tech tag */
+.tech-tag {
+  font-family: 'JetBrains Mono', monospace;
+  border-radius: calc(var(--radius) - 2px);
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: hsl(var(--cyan) / 0.08);
+  color: hsl(var(--cyan));
+  border: 1px solid hsl(var(--cyan) / 0.25);
+}
+
+/* Btn primary */
+.btn-cyber {
+  font-family: 'JetBrains Mono', monospace;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  background: hsl(var(--cyan));
+  color: hsl(var(--ink));
+  clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+}
+.btn-cyber:hover {
+  background: hsl(var(--cyan) / 0.9);
+  box-shadow: var(--glow-cyan);
+  transform: translateY(-2px);
+}
+
+.btn-ghost {
+  font-family: 'JetBrains Mono', monospace;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  background: transparent;
+  color: hsl(var(--cyan));
+  border: 1px solid hsl(var(--cyan) / 0.4);
+  clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+}
+.btn-ghost:hover {
+  background: hsl(var(--cyan) / 0.1);
+  border-color: hsl(var(--cyan));
+}
+
+/* Corner-cut card */
+.corner-cut {
+  clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
+}
